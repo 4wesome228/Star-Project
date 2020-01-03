@@ -3,32 +3,32 @@ import swapiService from "../../services/swapi-service";
 import "./random-planet.css";
 
 export default class RandomPlanet extends Component {
-  swapiService = new swapiService();
-
   state = {
     planet: {}
   };
 
   constructor() {
     super();
-    this.updatePlanet();
   }
 
   onRandomPlanetLoaded = planet => {
     this.setState({
       planet
     });
+    console.log(this.state);
   };
 
   updatePlanet() {
     const id = Math.floor(Math.random() * 25) + 2;
-    this.swapiService.getPlanet(2).then(this.onRandomPlanetLoaded);
+    this.swapiService = new swapiService();
+    this.swapiService.getPlanet(id).then(this.onRandomPlanetLoaded);
   }
 
   render() {
     const {
       planet: { population, rotationPeriod, diameter, name, id }
     } = this.state;
+
     return (
       <div className="random-planet jumbotron rounded">
         <img
