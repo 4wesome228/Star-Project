@@ -1,6 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
 class swapiService {
   _apibase = "https://swapi.co/api";
 
