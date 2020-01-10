@@ -9,35 +9,35 @@ class swapiService {
     return await resp.json();
   }
 
-  async getAllPeople() {
+  getAllPeople = async () => {
     const res = await this.getData("/people/");
     return res.results.map(this._transformPerson);
-  }
+  };
 
-  async getPerson(id) {
+  getPerson = async id => {
     const person = await this.getData(`/people/${id}`);
     return this._transformPerson(person);
-  }
+  };
 
-  async getPlanets() {
+  getPlanets = async () => {
     const res = await this.getData("/planets/");
     return res.results.map(this._transformPlanet);
-  }
+  };
 
-  async getPlanet(id) {
+  getPlanet = async id => {
     const planet = await this.getData(`/planets/${id}`);
     return this._transformPlanet(planet);
-  }
+  };
 
-  async getStarship(id) {
+  getStarship = async id => {
     const starship = await this.getData(`/starships/${id}`);
     return this._transformStarship(starship);
-  }
+  };
 
-  async getStarships() {
+  getStarships = async () => {
     const res = await this.getData("/starships/");
     return res.results.map(this._transformStarship);
-  }
+  };
 
   _generateId(item) {
     const idRegExp = /\/([0-9]*)\/$/;
