@@ -15,7 +15,7 @@ export default class ItemList extends Component {
   renderItems(array) {
     return array.map(item => {
       const { id } = item;
-      const isActive = id == this.props.selectedPersonId;
+      const isActive = id == this.props.selectedItemId;
       const label = this.props.renderItem(item);
 
       return (

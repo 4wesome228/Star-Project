@@ -1,5 +1,6 @@
 class swapiService {
   _apibase = "https://swapi.co/api";
+  _imageBase = "https://starwars-visualguide.com/assets/img";
 
   async getData(url) {
     const resp = await fetch(`${this._apibase}${url}`);
@@ -76,6 +77,20 @@ class swapiService {
       birthYear: person.birth_year,
       eyeColor: person.eye_color
     };
+  };
+
+  getPersonImage = ({ id }) => {
+    const a = `${this._imageBase}/characters/${id}.jpg`;
+    console.log(a);
+    return `${this._imageBase}/characters/${id}.jpg`;
+  };
+
+  getStarshipImage = ({ id }) => {
+    return `${this._imageBase}/starships/${id}.jpg`;
+  };
+
+  getPlanetImage = ({ id }) => {
+    return `${this._imageBase}/planets/${id}.jpg`;
   };
 }
 

@@ -8,7 +8,7 @@ export default class ErrorBoundry extends Component {
     this.setState({ hasError: true });
   }
   render() {
-    if (this.state.hasError) return;
+    if (this.state.hasError) return; //To-do add error indicator
     return this.props.children;
   }
 }

@@ -1,46 +1,46 @@
 import React, { Component } from "react";
 import SwapiServcie from "../../services/swapi-service";
-import "./person-details.css";
+import "./item-details.css";
 
-export default class PersonDetails extends Component {
+export default class itemDetails extends Component {
   swapiService = new SwapiServcie();
 
   state = {
-    personDetails: null
+    itemDetails: null,
+    imageUrl: null
   };
 
   componentDidMount() {
-    this.updatePersonDetails(this.props.personId);
+    this.updateItemDetails(this.props.itemId);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId) {
-      this.updatePersonDetails(this.props.personId);
+    if (this.props.itemId !== prevProps.itemId) {
+      this.updateItemDetails(this.props.itemId);
     }
   }
 
-  updatePersonDetails = personId => {
-    if (personId) {
-      this.swapiService
-        .getPerson(personId)
-        .then(personDetails => this.setState({ personDetails }));
+  updateItemDetails = itemId => {
+    const { getData, getImageUrl } = this.props;
+
+    if (itemId) {
+      getData(itemId).then(itemDetails =>
+        this.setState({ itemDetails, imageUrl: getImageUrl(itemDetails) })
+      );
     } else return;
   };
 
   render() {
-    if (!this.state.personDetails)
-      return <span>Select person from a list !</span>;
+    const { itemDetails, imageUrl } = this.state;
+    if (!itemDetails) return <span>Select item from a list !</span>;
 
-    const { id, name, gender, birthYear, eyeColor } = this.state.personDetails;
+    const { name, gender, birthYear, eyeColor } = itemDetails;
 
     return (
       <div className="person-details card">
-        <img
-          className="person-image"
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-          alt="Character"
-        />
-
+        <div className="image-container">
+          <img className="person-image" src={imageUrl} alt="item-image" />
+        </div>
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">

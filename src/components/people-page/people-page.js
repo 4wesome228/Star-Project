@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import ItemList from "../item-list/item-list";
-import PersonDetails from "../person-details/person-details";
+import ItemDetails from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
 import Row from "../Row/row";
 import ErorrBoundry from "../ErrorBoundry/errorBoundry";
 
 export default function PeoplePage() {
   const swapiService = new SwapiService();
-  const [selectedPersonId, setSelectedPerson] = useState(1);
+  const [selectedItemId, setSelectedItem] = useState(1);
 
-  const onPersonItemClicked = selectedPersonId => {
-    setSelectedPerson(selectedPersonId);
+  const onPersonItemClicked = selectedItemId => {
+    setSelectedItem(selectedItemId);
   };
 
   const itemList = (
     <ItemList
-      selectedPersonId={selectedPersonId}
+      selectedItemId={selectedItemId}
       onItemClicked={onPersonItemClicked}
       getData={swapiService.getAllPeople}
       renderItem={({ name }) => `${name}`}
     />
   );
 
-  const personDetails = <PersonDetails personId={selectedPersonId} />;
+  const itemDetails = <ItemDetails itemId={selectedItemId} />;
   return (
     <ErorrBoundry>
-      <Row left={itemList} right={personDetails} />
+      <Row left={itemList} right={itemDetails} />
     </ErorrBoundry>
   );
 }
