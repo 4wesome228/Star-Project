@@ -9,14 +9,14 @@ export default function PeoplePage() {
   const swapiService = new SwapiService();
   const [selectedItemId, setSelectedItem] = useState(1);
 
-  const onPersonItemClicked = selectedItemId => {
+  const onItemClicked = selectedItemId => {
     setSelectedItem(selectedItemId);
   };
 
   const itemList = (
     <ItemList
       selectedItemId={selectedItemId}
-      onItemClicked={onPersonItemClicked}
+      onItemClicked={onItemClicked}
       getData={swapiService.getAllPeople}
       renderItem={({ name }) => `${name}`}
     />

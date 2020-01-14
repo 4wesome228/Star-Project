@@ -44,18 +44,9 @@ export default class itemDetails extends Component {
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Gender</span>
-              <span>{gender || "unknown"}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Birth year</span>
-              <span>{birthYear || "unknown"}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye color</span>
-              <span>{eyeColor || "unknown"}</span>
-            </li>
+            {React.Children.map(this.props.children, child => {
+              return React.cloneElement(child, { itemDetails });
+            })}
           </ul>
         </div>
       </div>
