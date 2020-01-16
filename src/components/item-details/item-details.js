@@ -34,12 +34,12 @@ export default class itemDetails extends Component {
     const { itemDetails, imageUrl } = this.state;
     if (!itemDetails) return <span>Select item from a list !</span>;
 
-    const { name, gender, birthYear, eyeColor } = itemDetails;
+    const { name } = itemDetails;
 
     return (
       <div className="person-details card">
         <div className="image-container">
-          <img className="person-image" src={imageUrl} alt="item-image" />
+          <img className="person-image" src={imageUrl} alt="item" />
         </div>
         <div className="card-body">
           <h4>{name}</h4>

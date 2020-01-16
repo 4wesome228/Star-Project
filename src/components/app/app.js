@@ -6,14 +6,13 @@ import ItemDetails from "../item-details/item-details";
 import Record from "../Record/record";
 import SwapiService from "../../services/swapi-service";
 import ItemList from "../item-list/item-list";
-import PeoplePage from "../people-page/people-page";
 
 const App = () => {
   const swapiService = new SwapiService();
 
   const personDetails = (
     <ItemDetails
-      itemId={5}
+      itemId={3}
       getData={swapiService.getPerson}
       getImageUrl={swapiService.getPersonImage}
     >
@@ -32,6 +31,7 @@ const App = () => {
       <Record label="Cost" field="costInCredits" />
     </ItemDetails>
   );
+
   return (
     <ErrorBoundry>
       <div className="container">
@@ -40,7 +40,7 @@ const App = () => {
           getData={swapiService.getAllPeople}
           onItemClicked={() => console.log("")}
           renderItem={({ name }) => `${name}`}
-          selectedItemId={1}
+          selectedItemId={3}
         />
         <Row left={personDetails} right={starshipDetails} />
       </div>

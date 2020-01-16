@@ -8,3 +8,7 @@
 .list-group-item.active:hover {
   background-color: #375a7f;
 }
+
+.item-list .list-group-item:last-child {
+  margin-bottom: 1rem;
+}
