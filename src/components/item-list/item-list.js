@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./item-list.css";
 import Spinner from "../spinner/spinner";
-import { withData } from "../hoc-helper/with-data";
+import { hoc } from "../hoc-helper/hoc";
 import swapiService from "../../services/swapi-service";
 
 const ItemList = props => {
@@ -27,6 +27,4 @@ const ItemList = props => {
   );
 };
 
-const { getAllPeople } = new swapiService();
-
-export default withData(ItemList, getAllPeople);
+export default ItemList;

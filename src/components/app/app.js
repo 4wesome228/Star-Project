@@ -5,7 +5,11 @@ import Row from "../Row/row";
 import ItemDetails from "../item-details/item-details";
 import Record from "../Record/record";
 import SwapiService from "../../services/swapi-service";
-import ItemList from "../item-list/item-list";
+import {
+  PersonList,
+  PlanetList,
+  StarshipList
+} from "../starwars-components/item-lists";
 
 const App = () => {
   const swapiService = new SwapiService();
@@ -36,11 +40,20 @@ const App = () => {
     <ErrorBoundry>
       <div className="container">
         <Header />
-        <ItemList
-          getData={swapiService.getAllPeople}
+        <PersonList
           onItemClicked={() => console.log("")}
           renderItem={({ name }) => `${name}`}
           selectedItemId={3}
+        />
+        <PlanetList
+          onItemClicked={() => console.log("")}
+          renderItem={({ name }) => `${name}`}
+          selectedItemId={3}
+        />
+        <StarshipList
+          onItemClicked={() => console.log("")}
+          renderItem={({ name }) => `${name}`}
+          selectedItemId={5}
         />
         <Row left={personDetails} right={starshipDetails} />
       </div>
