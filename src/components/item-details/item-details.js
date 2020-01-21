@@ -25,7 +25,13 @@ export default class itemDetails extends Component {
 
     if (itemId) {
       getData(itemId).then(itemDetails =>
-        this.setState({ itemDetails, imageUrl: getImageUrl(itemDetails) })
+        this.setState((state, props) => {
+          console.log(props);
+          return {
+            itemDetails,
+            imageUrl: getImageUrl(itemDetails)
+          };
+        })
       );
     } else return;
   };

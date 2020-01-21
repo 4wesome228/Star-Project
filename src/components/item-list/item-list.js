@@ -1,8 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "./item-list.css";
 import Spinner from "../spinner/spinner";
-import { hoc } from "../hoc-helper/hoc";
-import swapiService from "../../services/swapi-service";
 
 const ItemList = props => {
   const { data, renderItem, onItemClicked, selectedItemId } = props;
