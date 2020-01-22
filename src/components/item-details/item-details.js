@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import SwapiServcie from "../../services/swapi-service";
 import "./item-details.css";
+import Spinner from "../spinner/spinner";
 
 export default class itemDetails extends Component {
   swapiService = new SwapiServcie();
 
   state = {
     itemDetails: null,
-    imageUrl: null
+    imageUrl: null,
+    loading: true
   };
 
   componentDidMount() {
@@ -22,14 +24,15 @@ export default class itemDetails extends Component {
 
   updateItemDetails = itemId => {
     const { getData, getImageUrl } = this.props;
-
+    this.setState({ loading: true });
     if (itemId) {
       getData(itemId).then(itemDetails =>
         this.setState((state, props) => {
           console.log(props);
           return {
             itemDetails,
-            imageUrl: getImageUrl(itemDetails)
+            imageUrl: getImageUrl(itemDetails),
+            loading: false
           };
         })
       );
@@ -37,11 +40,10 @@ export default class itemDetails extends Component {
   };
 
   render() {
-    const { itemDetails, imageUrl } = this.state;
+    const { itemDetails, imageUrl, loading } = this.state;
     if (!itemDetails) return <span>Select item from a list !</span>;
-
+    if (loading) return <Spinner />;
     const { name } = itemDetails;
-
     return (
       <div className="person-details card">
         <div className="image-container">

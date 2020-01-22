@@ -65,7 +65,10 @@ class swapiService {
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargoCapacity
+      cargoCapacity: starship.cargo_capacity,
+      hyperdriveRating: starship.hyperdrive_rating,
+      mglt: starship.MGLT,
+      starshipClass: starship.starship_class
     };
   };
 

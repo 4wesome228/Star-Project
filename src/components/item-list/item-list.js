@@ -7,6 +7,7 @@ const ItemList = props => {
   const items = data.map(item => {
     const { id } = item;
     const isActive = id == selectedItemId;
+    console.log(id);
     const label = renderItem(item);
 
     return (

@@ -1,13 +1,13 @@
 .person-details {
   display: flex;
   padding: 1rem;
-  flex-direction: row;
   align-items: center;
-  height: 100%;
+  flex-direction: row;
 }
 
 .image-container {
-  width: 35%;
+  width: 45%;
+  text-align: center;
 }
 
 .person-image {
