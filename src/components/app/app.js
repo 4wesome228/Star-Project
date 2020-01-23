@@ -10,18 +10,20 @@ import {
   StarshipList
 } from "../starwars-components/item-lists";
 
-import {
-  PlanetDetails,
-  StarshipDetails,
-  PersonDetails
-} from "../starwars-components/details";
+import PersonDetails from "../starwars-components/person-details";
+import StarshipDetails from "../starwars-components/starship-details";
+import PlanetDetails from "../starwars-components/planet-details";
+
+import { SwapiServiceProvider } from "../starwars-components/swapi-service-context";
+import SwapiService from "../../services/swapi-service";
 
 const App = () => {
   const [itemId, setItemId] = useState(2);
+  const swapiService = new SwapiService();
   return (
     <Router>
-      <ErrorBoundry>
-        <div className="container">
+      <div className="container">
+        <SwapiServiceProvider value={swapiService}>
           <Header />
           <Switch>
             <Route
@@ -70,8 +72,8 @@ const App = () => {
             />
             <Route path="/" render={() => <RandomPLanet />} />
           </Switch>
-        </div>
-      </ErrorBoundry>
+        </SwapiServiceProvider>
+      </div>
     </Router>
   );
 };

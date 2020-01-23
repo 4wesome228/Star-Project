@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDom from "react-dom";
 import App from "./components/app/app";
-import { BrowserRouter } from "react-router-dom";
+import ErrorBoundry from "./components/ErrorBoundry/errorBoundry";
+
 ReactDom.render(
-  <BrowserRouter>
+  <ErrorBoundry>
     <App />
-  </BrowserRouter>,
+  </ErrorBoundry>,
   document.getElementById("root")
 );

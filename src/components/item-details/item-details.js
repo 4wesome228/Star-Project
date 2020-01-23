@@ -24,11 +24,11 @@ export default class itemDetails extends Component {
 
   updateItemDetails = itemId => {
     const { getData, getImageUrl } = this.props;
+
     this.setState({ loading: true });
     if (itemId) {
       getData(itemId).then(itemDetails =>
-        this.setState((state, props) => {
-          console.log(props);
+        this.setState(loading => {
           return {
             itemDetails,
             imageUrl: getImageUrl(itemDetails),
@@ -41,8 +41,7 @@ export default class itemDetails extends Component {
 
   render() {
     const { itemDetails, imageUrl, loading } = this.state;
-    if (!itemDetails) return <span>Select item from a list !</span>;
-    if (loading) return <Spinner />;
+    if (!itemDetails || loading) return <Spinner />;
     const { name } = itemDetails;
     return (
       <div className="person-details card">

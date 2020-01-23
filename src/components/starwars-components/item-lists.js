@@ -1,12 +1,33 @@
 import ItemList from "../item-list/item-list";
-import { hoc } from "../hoc-helper/hoc";
+import { dataHOC } from "../hoc-helpers/dataHOC";
 import SwapiService from "../../services/swapi-service";
+import { swapiServiceHOC } from "../hoc-helpers/swapiServiceHOC";
 
-const { getAllPeople, getPlanets, getStarships } = new SwapiService();
+const mapPersonMethodsToProps = swapiService => {
+  return {
+    getData: swapiService.getAllPeople
+  };
+};
 
-const PersonList = hoc(ItemList, getAllPeople);
+const mapPlanetMethodsToProps = swapiService => {
+  return {
+    getData: swapiService.getPlanets
+  };
+};
 
-const PlanetList = hoc(ItemList, getPlanets);
-const StarshipList = hoc(ItemList, getStarships);
+const mapStarshipMethodsToProps = swapiService => {
+  return {
+    getData: swapiService.getStarships
+  };
+};
+
+const PersonList = swapiServiceHOC(dataHOC(ItemList), mapPersonMethodsToProps);
+
+const PlanetList = swapiServiceHOC(dataHOC(ItemList), mapPlanetMethodsToProps);
+
+const StarshipList = swapiServiceHOC(
+  dataHOC(ItemList),
+  mapStarshipMethodsToProps
+);
 
 export { PersonList, PlanetList, StarshipList };
