@@ -1,6 +1,5 @@
 import ItemList from "../item-list/item-list";
 import { dataHOC } from "../hoc-helpers/dataHOC";
-import SwapiService from "../../services/swapi-service";
 import { swapiServiceHOC } from "../hoc-helpers/swapiServiceHOC";
 
 const mapPersonMethodsToProps = swapiService => {
