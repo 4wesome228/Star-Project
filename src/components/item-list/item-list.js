@@ -28,7 +28,7 @@ const ItemList = props => {
 
 ItemList.propTypes = {
   renderItem: PropTypes.func.isRequired,
-  selectedItemId: PropTypes.number.isRequired,
+  selectedItemId: PropTypes.number,
   data: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 

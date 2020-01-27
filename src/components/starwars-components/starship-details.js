@@ -1,5 +1,4 @@
 import React from "react";
-
 import ItemDetails from "../item-details/item-details";
 import Record from "../Record/record";
 import { swapiServiceHOC } from "../hoc-helpers/swapiServiceHOC";

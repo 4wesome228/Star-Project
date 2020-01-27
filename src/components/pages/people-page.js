@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import PersonDetails from "../starwars-components/person-details";
 import { PersonList } from "../starwars-components/item-lists";
 import Row from "../Row/row";
+import { withRouter } from "react-router-dom";
 
-export default () => {
-  const [itemId, setItemId] = useState(2);
+const PeoplePage = ({ match, history }) => {
+  const { id } = match.params;
+
   return (
     <Row
       left={
         <PersonList
-          onItemClicked={id => setItemId(id)}
+          onItemClicked={id => history.push(`${id}`)}
           renderItem={({ name }) => `${name}`}
-          selectedItemId={itemId}
+          selectedItemId={parseInt(id)}
         />
       }
-      right={<PersonDetails itemId={itemId} />}
+      right={<PersonDetails itemId={id} />}
     />
   );
 };
+
+export default withRouter(PeoplePage);

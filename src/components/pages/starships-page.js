@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { StarshipList } from "../starwars-components/item-lists";
-import Row from "../Row/row";
-import StarshipDetails from "../starwars-components/starship-details";
+import { withRouter } from "react-router-dom";
 
-export default () => {
-  const [starshipId, setStarshipId] = useState(15);
+const StarshipsPage = ({ history }) => {
   return (
-    <Row
-      left={
-        <StarshipList
-          onItemClicked={id => setStarshipId(id)}
-          renderItem={({ name }) => `${name}`}
-          selectedItemId={starshipId}
-        />
-      }
-      right={<StarshipDetails itemId={starshipId} />}
+    <StarshipList
+      onItemClicked={itemId => {
+        history.push(`${itemId}`);
+      }}
+      renderItem={({ name }) => `${name}`}
     />
   );
 };
+
+export default withRouter(StarshipsPage);
