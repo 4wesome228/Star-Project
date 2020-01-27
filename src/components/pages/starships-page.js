@@ -9,12 +9,12 @@ export default () => {
     <Row
       left={
         <StarshipList
-          onItemClicked={() => console.log("")}
+          onItemClicked={id => setStarshipId(id)}
           renderItem={({ name }) => `${name}`}
-          selectedItemId={9}
+          selectedItemId={starshipId}
         />
       }
-      right={<StarshipDetails itemId="9" />}
+      right={<StarshipDetails itemId={starshipId} />}
     />
   );
 };
