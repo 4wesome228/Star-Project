@@ -4,10 +4,10 @@ import Spinner from "../spinner/spinner";
 
 const ItemList = props => {
   const { data, renderItem, onItemClicked, selectedItemId } = props;
+  console.log(data);
   const items = data.map(item => {
     const { id } = item;
-    const isActive = id == selectedItemId;
-    console.log(id);
+    const isActive = id === selectedItemId;
     const label = renderItem(item);
 
     return (

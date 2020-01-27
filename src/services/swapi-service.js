@@ -42,7 +42,7 @@ class swapiService {
 
   _generateId(item) {
     const idRegExp = /\/([0-9]*)\/$/;
-    return item.url.match(idRegExp)[1];
+    return parseInt(item.url.match(idRegExp)[1]);
   }
 
   _transformPlanet = planet => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { SwapiServiceProvider } from "../starwars-components/swapi-service-context";
 import Header from "../header/Header";
